@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background: #0b1f3a;
+}
+
+body {
+  min-height: 100vh;
+  color: #ffffff;
+  background-color: #0b1f3a;
+  background-image:
+    radial-gradient(900px 520px at 85% -10%, rgba(255, 191, 36, 0.12), transparent 60%),
+    radial-gradient(1100px 650px at 50% -15%, #1c3557 0%, #0b1f3a 55%, #071427 100%);
+  background-attachment: fixed;
+}
+
+/* Subtle eight-pointed star lattice, faded toward the bottom-left. */
+.star-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='white' stroke-opacity='0.09' stroke-width='1'%3E%3Crect x='16' y='16' width='32' height='32'/%3E%3Crect x='16' y='16' width='32' height='32' transform='rotate(45 32 32)'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse at top right, #000 0%, transparent 72%);
+  mask-image: radial-gradient(ellipse at top right, #000 0%, transparent 72%);
+}
+
+@keyframes grow {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--w);
+  }
+}
+
+.progress-fill {
+  width: var(--w);
+  animation: grow 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes sheen {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(300%);
+  }
+}
+
+.progress-sheen {
+  animation: sheen 2.8s ease-in-out 1.2s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-fill,
+  .progress-sheen {
+    animation: none;
+  }
+}
